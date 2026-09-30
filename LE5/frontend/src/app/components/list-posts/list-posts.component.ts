@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Post } from '../../models/post.model';
 
 @Component({
@@ -12,7 +12,7 @@ export class ListPostsComponent implements OnInit {
 
   posts?: Post[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.initData();
@@ -23,6 +23,7 @@ export class ListPostsComponent implements OnInit {
       .subscribe({
         next: (data: Post[]) => {
           this.posts = data;
+          this.cdr.markForCheck();
           console.log(this.posts);
         }
       })

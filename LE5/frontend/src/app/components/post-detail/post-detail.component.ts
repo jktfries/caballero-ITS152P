@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from '../../models/post.model';
@@ -19,7 +19,8 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class PostDetailComponent implements OnInit {
     this.http.get<Post>("https://localhost:7161/api/post/" + this.id).subscribe({
       next: (data: Post) => {
         this.post = data;
+        this.cdr.markForCheck();
         console.log(this.post);
       }
     })
