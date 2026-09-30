@@ -1,0 +1,46 @@
+.auth-shell {
+    max-width: 480px;
+}
+
+.auth-card {
+    padding: 36px 36px 30px;
+}
+
+.auth-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.auth-subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 28px;
+}
+
+.field-row {
+    display: flex;
+    gap: 16px;
+}
+
+.field-row .field {
+    flex: 1;
+}
+
+.auth-alt {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin: 22px 0 0;
+}
+
+@media (max-width: 560px) {
+    .auth-card {
+        padding: 26px 22px 24px;
+    }
+
+    .field-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

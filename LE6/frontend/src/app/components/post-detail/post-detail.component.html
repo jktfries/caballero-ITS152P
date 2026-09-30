@@ -1,0 +1,24 @@
+<div class="page">
+  <div class="container">
+
+    <a class="back-link" routerLink="/">&larr; All posts</a>
+
+    <div class="state" *ngIf="loading">
+      <div class="state-title">Loading post</div>
+    </div>
+
+    <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+    <article class="article" *ngIf="!loading && !error && post">
+      <h1 class="article-title">{{ post?.title }}</h1>
+      <p class="article-meta">
+        {{ post?.firstName }} {{ post?.lastName }}
+        <span class="handle">&#64;{{ post?.userName }}</span>
+        <span class="dot">&middot;</span>
+        {{ post?.dateCreated | date:'MMMM d, y' }}
+      </p>
+      <div class="article-body">{{ post?.body }}</div>
+    </article>
+
+  </div>
+</div>

@@ -1,0 +1,312 @@
+/* ---------------------------------------------------------------
+   Design tokens
+   White canvas: blocks are separated by shadow and whitespace,
+   not borders, so --bg and --surface are intentionally the same.
+   --------------------------------------------------------------- */
+:root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --subtle: #f6f8fa;
+    --border: #e9edf2;
+
+    --ink: #14212e;
+    --muted: #6b7a8c;
+
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --accent-soft: #f0fdfa;
+    --on-accent: #ffffff;
+
+    --danger: #ef4444;
+    --danger-soft: #fef2f2;
+
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow-soft: 0 2px 4px -2px rgb(16 32 48 / .05), 0 12px 32px -8px rgb(16 32 48 / .10);
+
+    --font-body: 'Work Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin: 0;
+}
+
+/* --------------------------- layout --------------------------- */
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.page {
+    padding: 48px 0 72px;
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 32px;
+}
+
+/* ---------------------------- nav ----------------------------- */
+
+.site-header {
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 68px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+.brand:hover {
+    color: var(--ink);
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--accent);
+    color: var(--on-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav a {
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 500;
+    transition: background .15s ease, color .15s ease;
+}
+
+.nav a:hover {
+    background: var(--subtle);
+    color: var(--ink);
+}
+
+.nav a.active {
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+}
+
+.nav a.nav-cta {
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+.nav a.nav-cta:hover {
+    background: var(--accent-hover);
+    color: var(--on-accent);
+}
+
+/* --------------------------- footer --------------------------- */
+
+.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 24px 0 40px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------------------------- cards --------------------------- */
+
+.card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 24px 28px;
+}
+
+/* ---------------------------- forms --------------------------- */
+
+.field {
+    display: block;
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.field input {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.field input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.field input::placeholder {
+    color: #aab4c0;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 18px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--on-accent);
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background .15s ease;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+}
+
+.btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* ------------------------ status blocks ----------------------- */
+
+.alert {
+    padding: 11px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.alert-error {
+    background: var(--danger-soft);
+    color: #b91c1c;
+}
+
+.state {
+    text-align: center;
+    padding: 56px 24px;
+    color: var(--muted);
+}
+
+.state-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+/* --------------------------- mobile --------------------------- */
+
+@media (max-width: 560px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .site-header .container {
+        min-height: 60px;
+    }
+
+    .brand span:last-child {
+        display: none;
+    }
+
+    .nav a {
+        padding: 7px 11px;
+        font-size: 14px;
+    }
+
+    .page {
+        padding: 32px 0 56px;
+    }
+
+    .page-title {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}

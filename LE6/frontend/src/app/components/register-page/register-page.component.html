@@ -1,0 +1,71 @@
+<div class="page">
+  <div class="container auth-shell">
+    <div class="card auth-card">
+
+      <h1 class="auth-title">Create your account</h1>
+      <p class="auth-subtitle">Join the blog and start posting.</p>
+
+      <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+      <form
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm">
+
+        <div class="field">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="up to 16 characters"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel" />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            [(ngModel)]="form.password"
+            required
+            #password="ngModel" />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input
+              type="text"
+              name="firstName"
+              [(ngModel)]="form.firstName"
+              required
+              #firstName="ngModel" />
+          </div>
+
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input
+              type="text"
+              name="lastName"
+              [(ngModel)]="form.lastName"
+              required
+              #lastName="ngModel" />
+          </div>
+        </div>
+
+        <button class="btn" [disabled]="loading">
+          {{ loading ? 'Creating account...' : 'Create account' }}
+        </button>
+
+      </form>
+
+      <p class="auth-alt">
+        Already registered? <a routerLink="/login">Sign in</a>
+      </p>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="container">
+    <a class="brand" routerLink="/">
+      <span class="brand-mark">B</span>
+      <span>Blog</span>
+    </a>
+    <nav class="nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register" routerLinkActive="active" class="nav-cta">Sign up</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    Josel Henri L. Caballero &middot; ITS152P - FOPM01 &middot; BSIT
+  </div>
+</footer>

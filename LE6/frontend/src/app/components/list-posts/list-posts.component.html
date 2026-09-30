@@ -1,0 +1,34 @@
+<div class="page">
+  <div class="container">
+
+    <h1 class="page-title">Latest posts</h1>
+    <p class="page-subtitle" *ngIf="!loading && !error">
+      {{ posts?.length }} {{ posts?.length === 1 ? 'post' : 'posts' }} published
+    </p>
+
+    <div class="state" *ngIf="loading">
+      <div class="state-title">Loading posts</div>
+      <div>Fetching the latest from the API.</div>
+    </div>
+
+    <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+    <div class="state" *ngIf="!loading && !error && posts?.length === 0">
+      <div class="state-title">No posts yet</div>
+      <div>Once a post is published it will appear here.</div>
+    </div>
+
+    <div class="post-list">
+      <a class="post-card" *ngFor="let post of posts" href="/posts/{{ post.id }}">
+        <h3 class="post-card-title">{{ post.title }}</h3>
+        <p class="post-card-meta">
+          {{ post.firstName }} {{ post.lastName }}
+          <span class="dot">&middot;</span>
+          {{ post.dateCreated | date:'MMM d, y' }}
+        </p>
+        <p class="post-card-body">{{ preview(post.body) }}</p>
+      </a>
+    </div>
+
+  </div>
+</div>

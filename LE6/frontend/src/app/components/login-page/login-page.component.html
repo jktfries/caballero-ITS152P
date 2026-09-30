@@ -1,0 +1,44 @@
+<div class="page">
+  <div class="container auth-shell">
+    <div class="card auth-card">
+
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">Sign in to continue to the blog.</p>
+
+      <div class="alert alert-error" *ngIf="error">{{ error }}</div>
+
+      <form name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input
+            required
+            type="text"
+            name="username"
+            placeholder="your username"
+            [(ngModel)]="form.username"
+            #username="ngModel">
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            [(ngModel)]="form.password"
+            required
+            #password="ngModel">
+        </div>
+
+        <button class="btn" [disabled]="loading">
+          {{ loading ? 'Signing in...' : 'Sign in' }}
+        </button>
+      </form>
+
+      <p class="auth-alt">
+        No account yet? <a routerLink="/register">Create one</a>
+      </p>
+
+    </div>
+  </div>
+</div>
